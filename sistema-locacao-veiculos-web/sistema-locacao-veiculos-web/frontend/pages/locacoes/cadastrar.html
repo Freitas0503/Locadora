@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Locação - Sistema de Controle de Locação de Veículos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>LocaVeículos</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="../../index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#veiculosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-car"></i> Veículos
+                    </a>
+                    <ul class="collapse list-unstyled" id="veiculosSubmenu">
+                        <li>
+                            <a href="../veiculos/listar.html">Listar Veículos</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/cadastrar.html">Cadastrar Veículo</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/manutencao.html">Manutenções</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/documentos.html">Documentos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#clientesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i> Clientes
+                    </a>
+                    <ul class="collapse list-unstyled" id="clientesSubmenu">
+                        <li>
+                            <a href="../clientes/listar.html">Listar Clientes</a>
+                        </li>
+                        <li>
+                            <a href="../clientes/cadastrar.html">Cadastrar Cliente</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#motoristasSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-id-card"></i> Motoristas
+                    </a>
+                    <ul class="collapse list-unstyled" id="motoristasSubmenu">
+                        <li>
+                            <a href="../motoristas/listar.html">Listar Motoristas</a>
+                        </li>
+                        <li>
+                            <a href="../motoristas/cadastrar.html">Cadastrar Motorista</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#locacoesSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i> Locações
+                    </a>
+                    <ul class="collapse show list-unstyled" id="locacoesSubmenu">
+                        <li>
+                            <a href="listar.html">Listar Locações</a>
+                        </li>
+                        <li class="active">
+                            <a href="cadastrar.html">Nova Locação</a>
+                        </li>
+                        <li>
+                            <a href="devolucao.html">Devolução</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#financeiroSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-dollar-sign"></i> Financeiro
+                    </a>
+                    <ul class="collapse list-unstyled" id="financeiroSubmenu">
+                        <li>
+                            <a href="../financeiro/recebimentos.html">Recebimentos</a>
+                        </li>
+                        <li>
+                            <a href="../financeiro/despesas.html">Despesas</a>
+                        </li>
+                        <li>
+                            <a href="../financeiro/relatorios.html">Relatórios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#fornecedoresSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-truck"></i> Fornecedores
+                    </a>
+                    <ul class="collapse list-unstyled" id="fornecedoresSubmenu">
+                        <li>
+                            <a href="../fornecedores/listar.html">Listar Fornecedores</a>
+                        </li>
+                        <li>
+                            <a href="../fornecedores/cadastrar.html">Cadastrar Fornecedor</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#usuariosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-cog"></i> Usuários
+                    </a>
+                    <ul class="collapse list-unstyled" id="usuariosSubmenu">
+                        <li>
+                            <a href="../usuarios/listar.html">Listar Usuários</a>
+                        </li>
+                        <li>
+                            <a href="../usuarios/cadastrar.html">Cadastrar Usuário</a>
+                        </li>
+                        <li>
+                            <a href="../usuarios/perfis.html">Perfis e Permissões</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="../configuracoes.html">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+                                <li><h6 class="dropdown-header">Notificações</h6></li>
+                                <li><a class="dropdown-item" href="#">Manutenção vencida - Veículo ABC-1234</a></li>
+                                <li><a class="dropdown-item" href="#">IPVA a vencer em 5 dias - Veículo DEF-5678</a></li>
+                                <li><a class="dropdown-item" href="#">Contrato #12345 atrasado</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Ver todas</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown ms-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> Admin
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Alterar Senha</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content -->
+            <div class="container-fluid">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="listar.html">Locações</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Nova Locação</li>
+                    </ol>
+                </nav>
+
+                <h2 class="mb-4">Nova Locação</h2>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form id="locacaoForm" class="needs-validation" novalidate>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="cliente" class="form-label">Cliente*</label>
+                                    <div class="input-group">
+                                        <select class="form-select" id="cliente" name="clienteId" required>
+                                            <option value="">Selecione...</option>
+                                            <!-- Opções serão carregadas via JavaScript -->
+                                        </select>
+                                        <button class="btn btn-outline-secondary" type="button" id="btnBuscarCliente">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                        <button class="btn btn-outline-primary" type="button" id="btnNovoCliente">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione o cliente.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="motorista" class="form-label">Motorista</label>
+                                    <div class="input-group">
+                                        <select class="form-select" id="motorista" name="motoristaId">
+                                            <option value="">Selecione...</option>
+                                            <!-- Opções serão carregadas via JavaScript -->
+                                        </select>
+                                        <button class="btn btn-outline-secondary" type="button" id="btnBuscarMotorista">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                        <button class="btn btn-outline-primary" type="button" id="btnNovoMotorista">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="veiculo" class="form-label">Veículo*</label>
+                                    <div class="input-group">
+                                        <select class="form-select" id="veiculo" name="veiculoId" required>
+                                            <option value="">Selecione...</option>
+                                            <!-- Opções serão carregadas via JavaScript -->
+                                        </select>
+                                        <button class="btn btn-outline-secondary" type="button" id="btnBuscarVeiculo">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione o veículo.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="tipoLocacao" class="form-label">Tipo de Locação*</label>
+                                    <select class="form-select" id="tipoLocacao" name="tipoLocacao" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="DIARIA">Diária</option>
+                                        <option value="SEMANAL">Semanal</option>
+                                        <option value="MENSAL">Mensal</option>
+                                        <option value="PERSONALIZADO">Personalizado</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione o tipo de locação.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="dataInicio" class="form-label">Data de Início*</label>
+                                    <input type="date" class="form-control" id="dataInicio" name="dataInicio" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a data de início.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="horaInicio" class="form-label">Hora de Início*</label>
+                                    <input type="time" class="form-control" id="horaInicio" name="horaInicio" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a hora de início.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="dataPrevista" class="form-label">Data Prevista de Devolução*</label>
+                                    <input type="date" class="form-control" id="dataPrevista" name="dataPrevista" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a data prevista de devolução.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="horaPrevista" class="form-label">Hora Prevista de Devolução*</label>
+                                    <input type="time" class="form-control" id="horaPrevista" name="horaPrevista" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a hora prevista de devolução.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="quilometragemInicial" class="form-label">Quilometragem Inicial*</label>
+                                    <input type="number" class="form-control" id="quilometragemInicial" name="quilometragemInicial" required min="0">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a quilometragem inicial.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="valorDiaria" class="form-label">Valor da Diária (R$)*</label>
+                                    <input type="number" class="form-control" id="valorDiaria" name="valorDiaria" required min="0" step="0.01" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="quantidadeDiarias" class="form-label">Quantidade de Diárias*</label>
+                                    <input type="number" class="form-control" id="quantidadeDiarias" name="quantidadeDiarias" required min="1">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a quantidade de diárias.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="valorTotal" class="form-label">Valor Total (R$)*</label>
+                                    <input type="number" class="form-control" id="valorTotal" name="valorTotal" required min="0" step="0.01" readonly>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="valorCaucao" class="form-label">Valor do Caução (R$)</label>
+                                    <input type="number" class="form-control" id="valorCaucao" name="valorCaucao" min="0" step="0.01">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="formaPagamento" class="form-label">Forma de Pagamento*</label>
+                                    <select class="form-select" id="formaPagamento" name="formaPagamento" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="DINHEIRO">Dinheiro</option>
+                                        <option value="CARTAO_CREDITO">Cartão de Crédito</option>
+                                        <option value="CARTAO_DEBITO">Cartão de Débito</option>
+                                        <option value="PIX">PIX</option>
+                                        <option value="TRANSFERENCIA">Transferência Bancária</option>
+                                        <option value="BOLETO">Boleto</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione a forma de pagamento.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="statusPagamento" class="form-label">Status do Pagamento*</label>
+                                    <select class="form-select" id="statusPagamento" name="statusPagamento" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="PENDENTE">Pendente</option>
+                                        <option value="PAGO">Pago</option>
+                                        <option value="PARCIAL">Parcialmente Pago</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione o status do pagamento.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="valorPago" class="form-label">Valor Pago (R$)</label>
+                                    <input type="number" class="form-control" id="valorPago" name="valorPago" min="0" step="0.01">
+                                </div>
+                            </div>
+
+                            <h5 class="mt-4 mb-3">Checklist de Entrega</h5>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="tanqueCheio" name="tanqueCheio">
+                                        <label class="form-check-label" for="tanqueCheio">
+                                            Tanque Cheio
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="limpo" name="limpo">
+                                        <label class="form-check-label" for="limpo">
+                                            Veículo Limpo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="documentosOk" name="documentosOk">
+                                        <label class="form-check-label" for="documentosOk">
+                                            Documentos em Ordem
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="estepe" name="estepe">
+                                        <label class="form-check-label" for="estepe">
+                                            Estepe
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="macaco" name="macaco">
+                                        <label class="form-check-label" for="macaco">
+                                            Macaco
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="triangulo" name="triangulo">
+                                        <label class="form-check-label" for="triangulo">
+                                            Triângulo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="observacoes" class="form-label">Observações</label>
+                                <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary me-2" onclick="window.location.href='listar.html'">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/locacoes.js"></script>
+</body>
+</html>

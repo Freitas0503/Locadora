@@ -1,0 +1,35 @@
+# Configuração para implantação no Render
+
+# Arquivo de configuração para implantação do backend no Render
+# Este arquivo instrui o Render sobre como construir e executar o aplicativo
+
+# Tipo de serviço: web service
+services:
+  - type: web
+    name: sistema-locacao-veiculos-api
+    env: java
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar -Dspring.profiles.active=prod target/*.jar
+    plan: starter # Plano gratuito do Render
+    
+    # Configurações de ambiente
+    envVars:
+      - key: JDBC_DATABASE_URL
+        value: jdbc:postgresql://dpg-cjnlqnf6fquc73f2v0i0-a.oregon-postgres.render.com:5432/locacao_veiculos
+      - key: JDBC_DATABASE_USERNAME
+        value: locadora
+      - key: JDBC_DATABASE_PASSWORD
+        sync: false # Será configurado manualmente no dashboard do Render
+      - key: JWT_SECRET
+        sync: false # Será configurado manualmente no dashboard do Render
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://sistema-locacao-veiculos.netlify.app
+      
+    # Configurações de saúde
+    healthCheckPath: /api/actuator/health
+    
+    # Configurações de região
+    region: oregon # US West
+    
+    # Configurações de escala
+    autoDeploy: true

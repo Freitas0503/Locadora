@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Clientes - Sistema de Controle de Locação de Veículos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>LocaVeículos</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="../../index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#veiculosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-car"></i> Veículos
+                    </a>
+                    <ul class="collapse list-unstyled" id="veiculosSubmenu">
+                        <li>
+                            <a href="../veiculos/listar.html">Listar Veículos</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/cadastrar.html">Cadastrar Veículo</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/manutencao.html">Manutenções</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/documentos.html">Documentos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#clientesSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-users"></i> Clientes
+                    </a>
+                    <ul class="collapse show list-unstyled" id="clientesSubmenu">
+                        <li class="active">
+                            <a href="listar.html">Listar Clientes</a>
+                        </li>
+                        <li>
+                            <a href="cadastrar.html">Cadastrar Cliente</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#motoristasSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-id-card"></i> Motoristas
+                    </a>
+                    <ul class="collapse list-unstyled" id="motoristasSubmenu">
+                        <li>
+                            <a href="../motoristas/listar.html">Listar Motoristas</a>
+                        </li>
+                        <li>
+                            <a href="../motoristas/cadastrar.html">Cadastrar Motorista</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#locacoesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i> Locações
+                    </a>
+                    <ul class="collapse list-unstyled" id="locacoesSubmenu">
+                        <li>
+                            <a href="../locacoes/listar.html">Listar Locações</a>
+                        </li>
+                        <li>
+                            <a href="../locacoes/cadastrar.html">Nova Locação</a>
+                        </li>
+                        <li>
+                            <a href="../locacoes/devolucao.html">Devolução</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#financeiroSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-dollar-sign"></i> Financeiro
+                    </a>
+                    <ul class="collapse list-unstyled" id="financeiroSubmenu">
+                        <li>
+                            <a href="../financeiro/recebimentos.html">Recebimentos</a>
+                        </li>
+                        <li>
+                            <a href="../financeiro/despesas.html">Despesas</a>
+                        </li>
+                        <li>
+                            <a href="../financeiro/relatorios.html">Relatórios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#fornecedoresSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-truck"></i> Fornecedores
+                    </a>
+                    <ul class="collapse list-unstyled" id="fornecedoresSubmenu">
+                        <li>
+                            <a href="../fornecedores/listar.html">Listar Fornecedores</a>
+                        </li>
+                        <li>
+                            <a href="../fornecedores/cadastrar.html">Cadastrar Fornecedor</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#usuariosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-cog"></i> Usuários
+                    </a>
+                    <ul class="collapse list-unstyled" id="usuariosSubmenu">
+                        <li>
+                            <a href="../usuarios/listar.html">Listar Usuários</a>
+                        </li>
+                        <li>
+                            <a href="../usuarios/cadastrar.html">Cadastrar Usuário</a>
+                        </li>
+                        <li>
+                            <a href="../usuarios/perfis.html">Perfis e Permissões</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="../configuracoes.html">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+                                <li><h6 class="dropdown-header">Notificações</h6></li>
+                                <li><a class="dropdown-item" href="#">Manutenção vencida - Veículo ABC-1234</a></li>
+                                <li><a class="dropdown-item" href="#">IPVA a vencer em 5 dias - Veículo DEF-5678</a></li>
+                                <li><a class="dropdown-item" href="#">Contrato #12345 atrasado</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Ver todas</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown ms-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> Admin
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Alterar Senha</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content -->
+            <div class="container-fluid">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Clientes</li>
+                    </ol>
+                </nav>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Clientes</h2>
+                    <a href="cadastrar.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Novo Cliente
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Buscar por nome, documento..." id="searchInput">
+                                    <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="tipoFilter">
+                                    <option value="">Todos os Tipos</option>
+                                    <option value="F">Pessoa Física</option>
+                                    <option value="J">Pessoa Jurídica</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="statusFilter">
+                                    <option value="">Todos os Status</option>
+                                    <option value="1">Ativos</option>
+                                    <option value="0">Inativos</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="clientesTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome/Razão Social</th>
+                                        <th>Tipo</th>
+                                        <th>Documento</th>
+                                        <th>Email</th>
+                                        <th>Telefone</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dados serão carregados via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <nav aria-label="Paginação">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Próximo</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/clientes.js"></script>
+</body>
+</html>

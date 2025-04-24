@@ -1,0 +1,20 @@
+{
+  "name": "sistema-locacao-veiculos",
+  "version": "1.0.0",
+  "description": "Sistema de Controle de Locação de Veículos",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve -s ."
+  },
+  "keywords": [
+    "locação",
+    "veículos",
+    "sistema",
+    "controle"
+  ],
+  "author": "LocaVeículos",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.0.1"
+  }
+}

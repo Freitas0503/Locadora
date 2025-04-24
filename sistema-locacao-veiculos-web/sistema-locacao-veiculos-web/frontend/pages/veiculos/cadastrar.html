@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Veículos - Sistema de Controle de Locação de Veículos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>LocaVeículos</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="../../index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li class="active">
+                    <a href="#veiculosSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-car"></i> Veículos
+                    </a>
+                    <ul class="collapse show list-unstyled" id="veiculosSubmenu">
+                        <li>
+                            <a href="listar.html">Listar Veículos</a>
+                        </li>
+                        <li class="active">
+                            <a href="cadastrar.html">Cadastrar Veículo</a>
+                        </li>
+                        <li>
+                            <a href="manutencao.html">Manutenções</a>
+                        </li>
+                        <li>
+                            <a href="documentos.html">Documentos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#clientesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i> Clientes
+                    </a>
+                    <ul class="collapse list-unstyled" id="clientesSubmenu">
+                        <li>
+                            <a href="../clientes/listar.html">Listar Clientes</a>
+                        </li>
+                        <li>
+                            <a href="../clientes/cadastrar.html">Cadastrar Cliente</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#motoristasSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-id-card"></i> Motoristas
+                    </a>
+                    <ul class="collapse list-unstyled" id="motoristasSubmenu">
+                        <li>
+                            <a href="../motoristas/listar.html">Listar Motoristas</a>
+                        </li>
+                        <li>
+                            <a href="../motoristas/cadastrar.html">Cadastrar Motorista</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#locacoesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i> Locações
+                    </a>
+                    <ul class="collapse list-unstyled" id="locacoesSubmenu">
+                        <li>
+                            <a href="../locacoes/listar.html">Listar Locações</a>
+                        </li>
+                        <li>
+                            <a href="../locacoes/cadastrar.html">Nova Locação</a>
+                        </li>
+                        <li>
+                            <a href="../locacoes/devolucao.html">Devolução</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#financeiroSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-dollar-sign"></i> Financeiro
+                    </a>
+                    <ul class="collapse list-unstyled" id="financeiroSubmenu">
+                        <li>
+                            <a href="../financeiro/recebimentos.html">Recebimentos</a>
+                        </li>
+                        <li>
+                            <a href="../financeiro/despesas.html">Despesas</a>
+                        </li>
+                        <li>
+                            <a href="../financeiro/relatorios.html">Relatórios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#fornecedoresSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-truck"></i> Fornecedores
+                    </a>
+                    <ul class="collapse list-unstyled" id="fornecedoresSubmenu">
+                        <li>
+                            <a href="../fornecedores/listar.html">Listar Fornecedores</a>
+                        </li>
+                        <li>
+                            <a href="../fornecedores/cadastrar.html">Cadastrar Fornecedor</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#usuariosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-cog"></i> Usuários
+                    </a>
+                    <ul class="collapse list-unstyled" id="usuariosSubmenu">
+                        <li>
+                            <a href="../usuarios/listar.html">Listar Usuários</a>
+                        </li>
+                        <li>
+                            <a href="../usuarios/cadastrar.html">Cadastrar Usuário</a>
+                        </li>
+                        <li>
+                            <a href="../usuarios/perfis.html">Perfis e Permissões</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="../configuracoes.html">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+                                <li><h6 class="dropdown-header">Notificações</h6></li>
+                                <li><a class="dropdown-item" href="#">Manutenção vencida - Veículo ABC-1234</a></li>
+                                <li><a class="dropdown-item" href="#">IPVA a vencer em 5 dias - Veículo DEF-5678</a></li>
+                                <li><a class="dropdown-item" href="#">Contrato #12345 atrasado</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Ver todas</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown ms-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> Admin
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Alterar Senha</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content -->
+            <div class="container-fluid">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="listar.html">Veículos</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cadastrar Veículo</li>
+                    </ol>
+                </nav>
+
+                <h2 class="mb-4">Cadastrar Veículo</h2>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form id="veiculoForm" class="needs-validation" novalidate>
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="placa" class="form-label">Placa*</label>
+                                    <input type="text" class="form-control" id="placa" name="placa" required maxlength="10" placeholder="ABC-1234">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a placa do veículo.
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="renavam" class="form-label">RENAVAM*</label>
+                                    <input type="text" class="form-control" id="renavam" name="renavam" required maxlength="30">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o RENAVAM do veículo.
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="chassi" class="form-label">Chassi*</label>
+                                    <input type="text" class="form-control" id="chassi" name="chassi" required maxlength="30">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o chassi do veículo.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="marca" class="form-label">Marca*</label>
+                                    <select class="form-select" id="marca" name="marca" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="1">VOLKSWAGEN</option>
+                                        <option value="2">FIAT</option>
+                                        <option value="3">CHEVROLET</option>
+                                        <option value="4">FORD</option>
+                                        <option value="5">TOYOTA</option>
+                                        <option value="6">HONDA</option>
+                                        <option value="7">HYUNDAI</option>
+                                        <option value="8">RENAULT</option>
+                                        <option value="9">NISSAN</option>
+                                        <option value="10">MERCEDES-BENZ</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione a marca do veículo.
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="modelo" class="form-label">Modelo*</label>
+                                    <select class="form-select" id="modelo" name="modeloId" required>
+                                        <option value="">Selecione a marca primeiro...</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione o modelo do veículo.
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="categoria" class="form-label">Categoria*</label>
+                                    <select class="form-select" id="categoria" name="categoria" disabled>
+                                        <option value="">Selecione o modelo primeiro...</option>
+                                        <option value="1">HATCH</option>
+                                        <option value="2">SEDAN</option>
+                                        <option value="3">SUV</option>
+                                        <option value="4">PICKUP</option>
+                                        <option value="5">LUXO</option>
+                                        <option value="6">VAN</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="anoFabricacao" class="form-label">Ano Fabricação*</label>
+                                    <input type="number" class="form-control" id="anoFabricacao" name="anoFabricacao" required min="1900" max="2100">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o ano de fabricação.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="anoModelo" class="form-label">Ano Modelo*</label>
+                                    <input type="number" class="form-control" id="anoModelo" name="anoModelo" required min="1900" max="2100">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o ano do modelo.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="cor" class="form-label">Cor*</label>
+                                    <input type="text" class="form-control" id="cor" name="cor" required maxlength="30">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a cor do veículo.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="combustivel" class="form-label">Combustível*</label>
+                                    <select class="form-select" id="combustivel" name="combustivel" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="GASOLINA">Gasolina</option>
+                                        <option value="ETANOL">Etanol</option>
+                                        <option value="FLEX">Flex</option>
+                                        <option value="DIESEL">Diesel</option>
+                                        <option value="GNV">GNV</option>
+                                        <option value="ELETRICO">Elétrico</option>
+                                        <option value="HIBRIDO">Híbrido</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione o combustível.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="quilometragem" class="form-label">Quilometragem*</label>
+                                    <input type="number" class="form-control" id="quilometragem" name="quilometragem" required min="0">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a quilometragem.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="capacidadePassageiros" class="form-label">Capacidade de Passageiros*</label>
+                                    <input type="number" class="form-control" id="capacidadePassageiros" name="capacidadePassageiros" required min="1" max="50">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe a capacidade de passageiros.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="capacidadeBagageiro" class="form-label">Capacidade do Bagageiro</label>
+                                    <input type="text" class="form-control" id="capacidadeBagageiro" name="capacidadeBagageiro" maxlength="30">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="status" class="form-label">Status*</label>
+                                    <select class="form-select" id="status" name="status" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="DISPONIVEL" selected>Disponível</option>
+                                        <option value="ALUGADO">Alugado</option>
+                                        <option value="MANUTENCAO">Em Manutenção</option>
+                                        <option value="INATIVO">Inativo</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione o status.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="valorDiaria" class="form-label">Valor Diária (R$)*</label>
+                                    <input type="number" class="form-control" id="valorDiaria" name="valorDiaria" required min="0" step="0.01">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o valor da diária.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="valorSemanal" class="form-label">Valor Semanal (R$)</label>
+                                    <input type="number" class="form-control" id="valorSemanal" name="valorSemanal" min="0" step="0.01">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="valorMensal" class="form-label">Valor Mensal (R$)</label>
+                                    <input type="number" class="form-control" id="valorMensal" name="valorMensal" min="0" step="0.01">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="valorCompra" class="form-label">Valor de Compra (R$)</label>
+                                    <input type="number" class="form-control" id="valorCompra" name="valorCompra" min="0" step="0.01">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="dataCompra" class="form-label">Data de Compra</label>
+                                    <input type="date" class="form-control" id="dataCompra" name="dataCompra">
+                                </div>
+                                <div class="col-md-9">
+                                    <label class="form-label">Opcionais</label>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="arCondicionado" name="arCondicionado">
+                                                <label class="form-check-label" for="arCondicionado">
+                                                    Ar Condicionado
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="direcaoHidraulica" name="direcaoHidraulica">
+                                                <label class="form-check-label" for="direcaoHidraulica">
+                                                    Direção Hidráulica
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="cambioAutomatico" name="cambioAutomatico">
+                                                <label class="form-check-label" for="cambioAutomatico">
+                                                    Câmbio Automático
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="vidroEletrico" name="vidroEletrico">
+                                                <label class="form-check-label" for="vidroEletrico">
+                                                    Vidro Elétrico
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="travaEletrica" name="travaEletrica">
+                                                <label class="form-check-label" for="travaEletrica">
+                                                    Trava Elétrica
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="alarme" name="alarme">
+                                                <label class="form-check-label" for="alarme">
+                                                    Alarme
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="som" name="som">
+                                                <label class="form-check-label" for="som">
+                                                    Som
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="airbag" name="airbag">
+                                                <label class="form-check-label" for="airbag">
+                                                    Airbag
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="abs" name="abs">
+                                                <label class="form-check-label" for="abs">
+                                                    ABS
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="observacoes" class="form-label">Observações</label>
+                                <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary me-2" onclick="window.location.href='listar.html'">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/veiculos.js"></script>
+</body>
+</html>

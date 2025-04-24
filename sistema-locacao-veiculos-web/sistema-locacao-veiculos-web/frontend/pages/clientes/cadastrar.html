@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes - Sistema de Controle de Locação de Veículos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>LocaVeículos</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="../../index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#veiculosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-car"></i> Veículos
+                    </a>
+                    <ul class="collapse list-unstyled" id="veiculosSubmenu">
+                        <li>
+                            <a href="../veiculos/listar.html">Listar Veículos</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/cadastrar.html">Cadastrar Veículo</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/manutencao.html">Manutenções</a>
+                        </li>
+                        <li>
+                            <a href="../veiculos/documentos.html">Documentos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#clientesSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-users"></i> Clientes
+                    </a>
+                    <ul class="collapse show list-unstyled" id="clientesSubmenu">
+                        <li>
+                            <a href="listar.html">Listar Clientes</a>
+                        </li>
+                        <li class="active">
+                            <a href="cadastrar.html">Cadastrar Cliente</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#motoristasSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-id-card"></i> Motoristas
+                    </a>
+                    <ul class="collapse list-unstyled" id="motoristasSubmenu">
+                        <li>
+                            <a href="../motoristas/listar.html">Listar Motoristas</a>
+                        </li>
+                        <li>
+                            <a href="../motoristas/cadastrar.html">Cadastrar Motorista</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#locacoesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i> Locações
+                    </a>
+                    <ul class="collapse list-unstyled" id="locacoesSubmenu">
+                        <li>
+                            <a href="../locacoes/listar.html">Listar Locações</a>
+                        </li>
+                        <li>
+                            <a href="../locacoes/cadastrar.html">Nova Locação</a>
+                        </li>
+                        <li>
+                            <a href="../locacoes/devolucao.html">Devolução</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#financeiroSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-dollar-sign"></i> Financeiro
+                    </a>
+                    <ul class="collapse list-unstyled" id="financeiroSubmenu">
+                        <li>
+                            <a href="../financeiro/recebimentos.html">Recebimentos</a>
+                        </li>
+                        <li>
+                            <a href="../financeiro/despesas.html">Despesas</a>
+                        </li>
+                        <li>
+                            <a href="../financeiro/relatorios.html">Relatórios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#fornecedoresSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-truck"></i> Fornecedores
+                    </a>
+                    <ul class="collapse list-unstyled" id="fornecedoresSubmenu">
+                        <li>
+                            <a href="../fornecedores/listar.html">Listar Fornecedores</a>
+                        </li>
+                        <li>
+                            <a href="../fornecedores/cadastrar.html">Cadastrar Fornecedor</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#usuariosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-cog"></i> Usuários
+                    </a>
+                    <ul class="collapse list-unstyled" id="usuariosSubmenu">
+                        <li>
+                            <a href="../usuarios/listar.html">Listar Usuários</a>
+                        </li>
+                        <li>
+                            <a href="../usuarios/cadastrar.html">Cadastrar Usuário</a>
+                        </li>
+                        <li>
+                            <a href="../usuarios/perfis.html">Perfis e Permissões</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="../configuracoes.html">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+                                <li><h6 class="dropdown-header">Notificações</h6></li>
+                                <li><a class="dropdown-item" href="#">Manutenção vencida - Veículo ABC-1234</a></li>
+                                <li><a class="dropdown-item" href="#">IPVA a vencer em 5 dias - Veículo DEF-5678</a></li>
+                                <li><a class="dropdown-item" href="#">Contrato #12345 atrasado</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Ver todas</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown ms-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> Admin
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Alterar Senha</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content -->
+            <div class="container-fluid">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="listar.html">Clientes</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cadastrar Cliente</li>
+                    </ol>
+                </nav>
+
+                <h2 class="mb-4">Cadastrar Cliente</h2>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form id="clienteForm" class="needs-validation" novalidate>
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label class="form-label">Tipo de Cliente*</label>
+                                    <div class="d-flex">
+                                        <div class="form-check me-4">
+                                            <input class="form-check-input" type="radio" name="tipo" id="tipoPF" value="F" checked>
+                                            <label class="form-check-label" for="tipoPF">
+                                                Pessoa Física
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tipo" id="tipoPJ" value="J">
+                                            <label class="form-check-label" for="tipoPJ">
+                                                Pessoa Jurídica
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="nome" class="form-label">Nome/Razão Social*</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" required maxlength="100">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o nome ou razão social.
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="divDocumento">
+                                    <label for="documento" class="form-label" id="labelDocumento">CPF*</label>
+                                    <input type="text" class="form-control" id="documento" name="documento" required maxlength="20">
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o documento.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" maxlength="100">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="telefone" class="form-label">Telefone</label>
+                                    <input type="text" class="form-control" id="telefone" name="telefone" maxlength="20">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="celular" class="form-label">Celular</label>
+                                    <input type="text" class="form-control" id="celular" name="celular" maxlength="20">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3" id="divPessoaFisica">
+                                <div class="col-md-4">
+                                    <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                                    <input type="date" class="form-control" id="dataNascimento" name="dataNascimento">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3" id="divPessoaJuridica" style="display: none;">
+                                <div class="col-md-6">
+                                    <label for="nomeFantasia" class="form-label">Nome Fantasia</label>
+                                    <input type="text" class="form-control" id="nomeFantasia" name="nomeFantasia" maxlength="100">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inscricaoEstadual" class="form-label">Inscrição Estadual</label>
+                                    <input type="text" class="form-control" id="inscricaoEstadual" name="inscricaoEstadual" maxlength="20">
+                                </div>
+                            </div>
+
+                            <h5 class="mt-4 mb-3">Endereço</h5>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="cep" class="form-label">CEP</label>
+                                    <input type="text" class="form-control" id="cep" name="cep" maxlength="10">
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="endereco" class="form-label">Endereço</label>
+                                    <input type="text" class="form-control" id="endereco" name="endereco" maxlength="150">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="numero" class="form-label">Número</label>
+                                    <input type="text" class="form-control" id="numero" name="numero" maxlength="10">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="complemento" class="form-label">Complemento</label>
+                                    <input type="text" class="form-control" id="complemento" name="complemento" maxlength="50">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="bairro" class="form-label">Bairro</label>
+                                    <input type="text" class="form-control" id="bairro" name="bairro" maxlength="50">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="cidade" class="form-label">Cidade</label>
+                                    <input type="text" class="form-control" id="cidade" name="cidade" maxlength="50">
+                                </div>
+                                <div class="col-md-1">
+                                    <label for="estado" class="form-label">UF</label>
+                                    <input type="text" class="form-control" id="estado" name="estado" maxlength="2">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="observacoes" class="form-label">Observações</label>
+                                <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary me-2" onclick="window.location.href='listar.html'">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/clientes.js"></script>
+</body>
+</html>

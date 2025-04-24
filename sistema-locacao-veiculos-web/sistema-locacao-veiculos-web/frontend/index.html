@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle de Locação de Veículos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Sistema completo para controle de locação de veículos, gerenciamento de frota, clientes e finanças.">
+    <meta name="keywords" content="locação de veículos, aluguel de carros, gestão de frota, sistema de locadora">
+    <meta name="author" content="LocaVeículos">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sistema-locacao-veiculos.netlify.app/">
+    <meta property="og:title" content="Sistema de Controle de Locação de Veículos">
+    <meta property="og:description" content="Sistema completo para controle de locação de veículos, gerenciamento de frota, clientes e finanças.">
+    <meta property="og:image" content="https://sistema-locacao-veiculos.netlify.app/assets/img/og-image.jpg">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sistema-locacao-veiculos.netlify.app/">
+    <meta property="twitter:title" content="Sistema de Controle de Locação de Veículos">
+    <meta property="twitter:description" content="Sistema completo para controle de locação de veículos, gerenciamento de frota, clientes e finanças.">
+    <meta property="twitter:image" content="https://sistema-locacao-veiculos.netlify.app/assets/img/twitter-image.jpg">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>LocaVeículos</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#veiculosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-car"></i> Veículos
+                    </a>
+                    <ul class="collapse list-unstyled" id="veiculosSubmenu">
+                        <li>
+                            <a href="pages/veiculos/listar.html">Listar Veículos</a>
+                        </li>
+                        <li>
+                            <a href="pages/veiculos/cadastrar.html">Cadastrar Veículo</a>
+                        </li>
+                        <li>
+                            <a href="pages/veiculos/manutencao.html">Manutenções</a>
+                        </li>
+                        <li>
+                            <a href="pages/veiculos/documentos.html">Documentos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#clientesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i> Clientes
+                    </a>
+                    <ul class="collapse list-unstyled" id="clientesSubmenu">
+                        <li>
+                            <a href="pages/clientes/listar.html">Listar Clientes</a>
+                        </li>
+                        <li>
+                            <a href="pages/clientes/cadastrar.html">Cadastrar Cliente</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#motoristasSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-id-card"></i> Motoristas
+                    </a>
+                    <ul class="collapse list-unstyled" id="motoristasSubmenu">
+                        <li>
+                            <a href="pages/motoristas/listar.html">Listar Motoristas</a>
+                        </li>
+                        <li>
+                            <a href="pages/motoristas/cadastrar.html">Cadastrar Motorista</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#locacoesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i> Locações
+                    </a>
+                    <ul class="collapse list-unstyled" id="locacoesSubmenu">
+                        <li>
+                            <a href="pages/locacoes/listar.html">Listar Locações</a>
+                        </li>
+                        <li>
+                            <a href="pages/locacoes/cadastrar.html">Nova Locação</a>
+                        </li>
+                        <li>
+                            <a href="pages/locacoes/devolucao.html">Devolução</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#financeiroSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-dollar-sign"></i> Financeiro
+                    </a>
+                    <ul class="collapse list-unstyled" id="financeiroSubmenu">
+                        <li>
+                            <a href="pages/financeiro/recebimentos.html">Recebimentos</a>
+                        </li>
+                        <li>
+                            <a href="pages/financeiro/despesas.html">Despesas</a>
+                        </li>
+                        <li>
+                            <a href="pages/financeiro/relatorios.html">Relatórios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#fornecedoresSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-truck"></i> Fornecedores
+                    </a>
+                    <ul class="collapse list-unstyled" id="fornecedoresSubmenu">
+                        <li>
+                            <a href="pages/fornecedores/listar.html">Listar Fornecedores</a>
+                        </li>
+                        <li>
+                            <a href="pages/fornecedores/cadastrar.html">Cadastrar Fornecedor</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#usuariosSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-cog"></i> Usuários
+                    </a>
+                    <ul class="collapse list-unstyled" id="usuariosSubmenu">
+                        <li>
+                            <a href="pages/usuarios/listar.html">Listar Usuários</a>
+                        </li>
+                        <li>
+                            <a href="pages/usuarios/cadastrar.html">Cadastrar Usuário</a>
+                        </li>
+                        <li>
+                            <a href="pages/usuarios/perfis.html">Perfis e Permissões</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="pages/configuracoes.html">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="logout" id="btnLogout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger notification-badge">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+                                <li><h6 class="dropdown-header">Notificações</h6></li>
+                                <li><a class="dropdown-item" href="#">Manutenção vencida - Veículo ABC-1234</a></li>
+                                <li><a class="dropdown-item" href="#">IPVA a vencer em 5 dias - Veículo DEF-5678</a></li>
+                                <li><a class="dropdown-item" href="#">Contrato #12345 atrasado</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Ver todas</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown ms-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> <span id="currentUserName">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="pages/usuarios/perfil.html">Meu Perfil</a></li>
+                                <li><a class="dropdown-item" href="pages/usuarios/alterar-senha.html">Alterar Senha</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="menuLogout">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content -->
+            <div class="container-fluid">
+                <h2 class="mb-4">Dashboard</h2>
+
+                <!-- Status Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card bg-primary text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Veículos Disponíveis</h6>
+                                        <h2 class="mb-0" id="veiculosDisponiveisCount">15</h2>
+                                    </div>
+                                    <i class="fas fa-car fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a href="pages/veiculos/listar.html" class="text-white">Ver detalhes</a>
+                                <i class="fas fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-success text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Locações Ativas</h6>
+                                        <h2 class="mb-0" id="locacoesAtivasCount">8</h2>
+                                    </div>
+                                    <i class="fas fa-file-contract fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a href="pages/locacoes/listar.html" class="text-white">Ver detalhes</a>
+                                <i class="fas fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-warning text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Manutenções Pendentes</h6>
+                                        <h2 class="mb-0" id="manutencoesPendentesCount">3</h2>
+                                    </div>
+                                    <i class="fas fa-tools fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a href="pages/veiculos/manutencao.html" class="text-white">Ver detalhes</a>
+                                <i class="fas fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-danger text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Contratos Atrasados</h6>
+                                        <h2 class="mb-0" id="contratosAtrasadosCount">2</h2>
+                                    </div>
+                                    <i class="fas fa-exclamation-triangle fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a href="pages/locacoes/listar.html?status=atrasado" class="text-white">Ver detalhes</a>
+                                <i class="fas fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Receitas x Despesas</h5>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-outline-primary active" data-period="mensal">Mensal</button>
+                                    <button type="button" class="btn btn-outline-primary" data-period="trimestral">Trimestral</button>
+                                    <button type="button" class="btn btn-outline-primary" data-period="anual">Anual</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="financeiroChart" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Status dos Veículos</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="veiculosStatusChart" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities and Alerts -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Atividades Recentes</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="list-group list-group-flush" id="atividadesRecentes">
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Nova locação registrada</h6>
+                                            <small class="text-muted">Há 3 horas</small>
+                                        </div>
+                                        <p class="mb-1">Cliente: João da Silva - Veículo: GOL (ABC-1234)</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Veículo devolvido</h6>
+                                            <small class="text-muted">Há 5 horas</small>
+                                        </div>
+                                        <p class="mb-1">Cliente: Empresa ABC - Veículo: COROLLA (DEF-5678)</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Manutenção agendada</h6>
+                                            <small class="text-muted">Há 1 dia</small>
+                                        </div>
+                                        <p class="mb-1">Veículo: ECOSPORT (JKL-3456) - Tipo: Preventiva</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Novo cliente cadastrado</h6>
+                                            <small class="text-muted">Há 2 dias</small>
+                                        </div>
+                                        <p class="mb-1">Cliente: Maria Oliveira (Pessoa Física)</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Pagamento recebido</h6>
+                                            <small class="text-muted">Há 2 dias</small>
+                                        </div>
+                                        <p class="mb-1">Contrato #12345 - Valor: R$ 1.500,00</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="#">Ver todas as atividades</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Alertas</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="list-group list-group-flush" id="alertasList">
+                                    <li class="list-group-item list-group-item-danger">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Manutenção vencida</h6>
+                                            <small>Urgente</small>
+                                        </div>
+                                        <p class="mb-1">Veículo: GOL (ABC-1234) - Vencida há 5 dias</p>
+                                    </li>
+                                    <li class="list-group-item list-group-item-warning">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">IPVA a vencer</h6>
+                                            <small>Atenção</small>
+                                        </div>
+                                        <p class="mb-1">Veículo: COROLLA (DEF-5678) - Vence em 5 dias</p>
+                                    </li>
+                                    <li class="list-group-item list-group-item-danger">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Contrato atrasado</h6>
+                                            <small>Urgente</small>
+                                        </div>
+                                        <p class="mb-1">Contrato #12345 - Cliente: Empresa ABC - Atrasado há 2 dias</p>
+                                    </li>
+                                    <li class="list-group-item list-group-item-warning">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Seguro a vencer</h6>
+                                            <small>Atenção</small>
+                                        </div>
+                                        <p class="mb-1">Veículo: TORO (MNO-7890) - Vence em 10 dias</p>
+                                    </li>
+                                    <li class="list-group-item list-group-item-info">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Revisão programada</h6>
+                                            <small>Informação</small>
+                                        </div>
+                                        <p class="mb-1">Veículo: ONIX (GHI-9012) - Próxima revisão em 500 km</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="#">Ver todos os alertas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuário</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="alert alert-danger d-none" id="loginError"></div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-center w-100">
+                        <small class="text-muted">Sistema de Controle de Locação de Veículos v1.0.0</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="alertToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto" id="toastTitle">Notificação</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastMessage">
+                Mensagem de notificação
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <!-- Config JS -->
+    <script src="assets/js/config.js"></script>
+    <!-- API JS -->
+    <script src="assets/js/api.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
